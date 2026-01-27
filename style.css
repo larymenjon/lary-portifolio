@@ -190,7 +190,7 @@ nav {
 /* Hero Section */
 .hero {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 5rem 10%; min-height: 85vh; flex-wrap: wrap; gap: 50px;
+    padding: 2rem 10% 5rem 10%; min-height: 85vh; flex-wrap: wrap; gap: 50px;
 }
 .hero-content { flex: 1; min-width: 300px; }
 .faction-icon {
