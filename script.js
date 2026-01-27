@@ -1,5 +1,67 @@
 document.addEventListener("DOMContentLoaded", () => {
     
+    // ===== MENU HAMBURGER =====
+    const navToggle = document.getElementById("navToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener("click", () => {
+            navToggle.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        // Fechar menu ao clicar em um link
+        navMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navToggle.classList.remove("active");
+                navMenu.classList.remove("active");
+            });
+        });
+    }
+
+    // ===== CARDS SECRETOS (MOBILE) =====
+    const championCard = document.getElementById("championCard");
+    const secretCards = document.querySelectorAll(".secret-card");
+    const mainCardContent = document.querySelector(".main-card-content");
+    let cardsOpen = false;
+
+    // Verificar se é mobile
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+
+    // Se for desktop, esconder cards inicialmente mas mostrar com hover
+    if (mainCardContent && !isMobile()) {
+        mainCardContent.addEventListener("mouseenter", () => {
+            secretCards.forEach(card => card.classList.add("visible"));
+        });
+        mainCardContent.addEventListener("mouseleave", () => {
+            secretCards.forEach(card => card.classList.remove("visible"));
+        });
+    }
+
+    // Se for mobile, abrir/fechar cards ao clicar
+    if (championCard && isMobile()) {
+        championCard.addEventListener("click", () => {
+            cardsOpen = !cardsOpen;
+            secretCards.forEach(card => {
+                if (cardsOpen) {
+                    card.classList.add("visible");
+                } else {
+                    card.classList.remove("visible");
+                }
+            });
+        });
+    }
+
+    // Fechar cards ao redimensionar tela
+    window.addEventListener("resize", () => {
+        if (isMobile()) {
+            cardsOpen = false;
+            secretCards.forEach(card => card.classList.remove("visible"));
+        }
+    });
+    
     // ===== PLAYER DE ÁUDIO =====
     const bgMusic = document.getElementById("bgMusic");
     const audioToggle = document.getElementById("audioToggle");
