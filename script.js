@@ -1,5 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
     
+    // ===== PLAYER DE ÁUDIO =====
+    const bgMusic = document.getElementById("bgMusic");
+    const audioToggle = document.getElementById("audioToggle");
+    const volumeControl = document.getElementById("volumeControl");
+
+    if (bgMusic && audioToggle && volumeControl) {
+        // Definir volume inicial
+        bgMusic.volume = 0.3;
+
+        // Toggle play/pause
+        audioToggle.addEventListener("click", () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                audioToggle.classList.add("playing");
+            } else {
+                bgMusic.pause();
+                audioToggle.classList.remove("playing");
+            }
+        });
+
+        // Controlar volume
+        volumeControl.addEventListener("input", (e) => {
+            bgMusic.volume = e.target.value / 100;
+        });
+
+        // Tentar autoplay (alguns navegadores bloqueiam)
+        bgMusic.play().catch(() => {
+            console.log("Autoplay bloqueado - clique no botão para tocar a música");
+        });
+    }
+    
     // EFEITO PARALLAX NO FUNDO RÚNICO
     document.addEventListener("mousemove", (e) => {
         const shapes = document.querySelectorAll(".hex-shape");

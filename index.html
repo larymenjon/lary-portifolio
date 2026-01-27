@@ -41,6 +41,17 @@
         </ul>
     </nav>
 
+    <!-- PLAYER DE ÁUDIO -->
+    <audio id="bgMusic" loop>
+        <source src="/img/background-music.mp3" type="audio/mpeg">
+    </audio>
+    <div class="audio-player">
+        <button id="audioToggle" class="audio-btn" title="Play/Pause música">
+            <i class="fas fa-music"></i>
+        </button>
+        <input type="range" id="volumeControl" class="volume-slider" min="0" max="100" value="30" title="Volume">
+    </div>
+
     <header class="hero" id="hero">
         <div class="hero-content">
             <div class="faction-icon"><i class="fas fa-cog fa-spin"></i> Portifólio - SISTEMAS & GAMES</div>
