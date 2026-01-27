@@ -22,8 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // ===== CARDS SECRETOS (MOBILE) =====
     const championCard = document.getElementById("championCard");
     const secretCards = document.querySelectorAll(".secret-card");
+    const cardHusband = document.querySelector(".card-husband");
+    const cardBaby = document.querySelector(".card-baby");
     const mainCardContent = document.querySelector(".main-card-content");
     let cardsOpen = false;
+    let activeCard = null;
 
     // Verificar se é mobile
     function isMobile() {
@@ -37,28 +40,65 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         mainCardContent.addEventListener("mouseleave", () => {
             secretCards.forEach(card => card.classList.remove("visible"));
+            activeCard = null;
         });
     }
 
     // Se for mobile, abrir/fechar cards ao clicar
     if (championCard && isMobile()) {
-        championCard.addEventListener("click", () => {
-            cardsOpen = !cardsOpen;
-            secretCards.forEach(card => {
+        // Clicar no card principal abre/fecha todos
+        mainCardContent.addEventListener("click", (e) => {
+            if (!e.target.closest(".secret-card")) {
+                cardsOpen = !cardsOpen;
                 if (cardsOpen) {
-                    card.classList.add("visible");
+                    secretCards.forEach(card => card.classList.add("visible"));
+                    activeCard = null;
                 } else {
-                    card.classList.remove("visible");
+                    secretCards.forEach(card => card.classList.remove("visible"));
+                    activeCard = null;
+                }
+            }
+        });
+
+        // Clicar em cada card secreto individualmente o coloca na frente
+        if (cardHusband) {
+            cardHusband.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (activeCard !== "husband") {
+                    activeCard = "husband";
+                    cardHusband.style.zIndex = "20";
+                    if (cardBaby) cardBaby.style.zIndex = "5";
+                } else {
+                    activeCard = null;
+                    cardHusband.style.zIndex = "5";
                 }
             });
-        });
+        }
+
+        if (cardBaby) {
+            cardBaby.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (activeCard !== "baby") {
+                    activeCard = "baby";
+                    cardBaby.style.zIndex = "20";
+                    if (cardHusband) cardHusband.style.zIndex = "5";
+                } else {
+                    activeCard = null;
+                    cardBaby.style.zIndex = "5";
+                }
+            });
+        }
     }
 
     // Fechar cards ao redimensionar tela
     window.addEventListener("resize", () => {
         if (isMobile()) {
             cardsOpen = false;
-            secretCards.forEach(card => card.classList.remove("visible"));
+            activeCard = null;
+            secretCards.forEach(card => {
+                card.classList.remove("visible");
+                card.style.zIndex = "5";
+            });
         }
     });
     
