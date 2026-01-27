@@ -16,10 +16,19 @@
 
 body {
     background-color: var(--lol-dark-blue);
-    background-image: radial-gradient(circle at center, #112240 0%, #091428 100%);
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(10, 200, 185, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(200, 170, 110, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at center, #112240 0%, #091428 100%);
     color: var(--lol-gold-light);
     font-family: var(--font-text);
     overflow-x: hidden;
+    animation: bgShift 20s ease-in-out infinite;
+}
+
+@keyframes bgShift {
+    0%, 100% { filter: brightness(1) hue-rotate(0deg); }
+    50% { filter: brightness(1.05) hue-rotate(5deg); }
 }
 
 /* Base Styles */
@@ -51,20 +60,82 @@ h1, h2, h3, .logo, .champ-name, .card-title-bar {
 .floating-bg {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1; overflow: hidden; pointer-events: none;
+    background: 
+        radial-gradient(circle at 15% 30%, rgba(10, 200, 185, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(200, 170, 110, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(10, 200, 185, 0.05) 0%, transparent 60%);
+    animation: floatingBgPulse 8s ease-in-out infinite;
+}
+
+@keyframes floatingBgPulse {
+    0%, 100% { filter: brightness(1) saturate(1); }
+    50% { filter: brightness(1.08) saturate(1.1); }
+}
+.floating-bg::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: 
+        conic-gradient(from 0deg, rgba(200, 170, 110, 0.03) 0deg, transparent 90deg),
+        conic-gradient(from 90deg at 50% 50%, rgba(10, 200, 185, 0.04) 0deg, transparent 90deg);
+    animation: rotateBg 30s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotateBg {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 .hex-shape {
     position: absolute; font-size: 2rem; color: var(--lol-accent);
-    opacity: 0.15; animation: floatAnim 15s infinite linear;
-    filter: drop-shadow(0 0 5px var(--lol-accent));
+    opacity: 0.2; animation: floatAnim 15s infinite linear;
+    filter: drop-shadow(0 0 8px var(--lol-accent)) drop-shadow(0 0 16px rgba(10, 200, 185, 0.4));
+    text-shadow: 0 0 10px rgba(10, 200, 185, 0.6);
 }
-.s1 { top: 10%; left: 10%; animation-duration: 18s; font-size: 3rem; }
-.s2 { bottom: 20%; right: 15%; animation-duration: 25s; color: var(--lol-gold); }
-.s3 { top: 60%; left: 5%; animation-duration: 20s; }
-.s4 { top: 30%; right: 30%; animation-duration: 30s; }
+.hex-shape.blurred {
+    opacity: 0.12; filter: blur(1.5px) drop-shadow(0 0 12px var(--lol-accent)) drop-shadow(0 0 20px rgba(10, 200, 185, 0.3));
+}
+.s1 { top: 10%; left: 10%; animation-duration: 18s; font-size: 3rem; animation-name: floatAnimGlow; }
+.s2 { bottom: 20%; right: 15%; animation-duration: 25s; color: var(--lol-gold); animation-name: floatAnimGold; }
+.s3 { top: 60%; left: 5%; animation-duration: 20s; animation-name: floatAnimGlow; }
+.s4 { top: 30%; right: 30%; animation-duration: 30s; animation-name: floatAnimGlow; }
+.s5 { top: 15%; right: 8%; animation-duration: 22s; animation-name: floatAnim2; color: var(--lol-accent); }
+.s6 { bottom: 30%; left: 20%; animation-duration: 28s; animation-name: floatAnim3; color: var(--lol-gold); }
+.s7 { top: 45%; right: 25%; animation-duration: 35s; animation-name: floatAnimGlow; font-size: 2.5rem; }
+.s8 { bottom: 10%; right: 40%; animation-duration: 26s; animation-name: floatAnim2; font-size: 2.2rem; color: var(--lol-accent); }
+.s9 { top: 70%; right: 10%; animation-duration: 32s; animation-name: floatAnim3; color: var(--lol-gold); font-size: 1.8rem; }
+.s10 { bottom: 40%; left: 5%; animation-duration: 24s; animation-name: floatAnimGlow; font-size: 2rem; }
+
+@keyframes floatAnimGlow {
+    0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.15; }
+    25% { transform: translateY(-40px) rotate(90deg) scale(1.15); opacity: 0.25; }
+    50% { transform: translateY(-60px) rotate(180deg) scale(1.2); opacity: 0.2; }
+    75% { transform: translateY(-30px) rotate(270deg) scale(1.1); opacity: 0.22; }
+    100% { transform: translateY(0) rotate(360deg) scale(1); opacity: 0.15; }
+}
+
+@keyframes floatAnimGold {
+    0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.15; filter: drop-shadow(0 0 8px #c8aa6e) drop-shadow(0 0 16px rgba(200, 170, 110, 0.4)); }
+    25% { transform: translateY(-35px) rotate(90deg) scale(1.12); opacity: 0.23; filter: drop-shadow(0 0 12px #c8aa6e) drop-shadow(0 0 20px rgba(200, 170, 110, 0.6)); }
+    50% { transform: translateY(-50px) rotate(180deg) scale(1.18); opacity: 0.2; filter: drop-shadow(0 0 15px #c8aa6e) drop-shadow(0 0 25px rgba(200, 170, 110, 0.5)); }
+    75% { transform: translateY(-25px) rotate(270deg) scale(1.08); opacity: 0.22; filter: drop-shadow(0 0 10px #c8aa6e) drop-shadow(0 0 18px rgba(200, 170, 110, 0.4)); }
+    100% { transform: translateY(0) rotate(360deg) scale(1); opacity: 0.15; filter: drop-shadow(0 0 8px #c8aa6e) drop-shadow(0 0 16px rgba(200, 170, 110, 0.4)); }
+}
 @keyframes floatAnim {
     0% { transform: translateY(0) rotate(0deg) scale(1); }
     50% { transform: translateY(-30px) rotate(180deg) scale(1.1); }
     100% { transform: translateY(0) rotate(360deg) scale(1); }
+}
+@keyframes floatAnim2 {
+    0% { transform: translateX(0) translateY(0) rotate(0deg) scale(1); }
+    33% { transform: translateX(20px) translateY(-20px) rotate(120deg) scale(1.05); }
+    66% { transform: translateX(-15px) translateY(15px) rotate(240deg) scale(0.95); }
+    100% { transform: translateX(0) translateY(0) rotate(360deg) scale(1); }
+}
+@keyframes floatAnim3 {
+    0% { transform: translateY(0) translateX(0) scale(1); }
+    25% { transform: translateY(-25px) translateX(25px) scale(1.1); }
+    50% { transform: translateY(0) translateX(0) scale(0.9); }
+    75% { transform: translateY(25px) translateX(-25px) scale(1.05); }
+    100% { transform: translateY(0) translateX(0) scale(1); }
 }
 
 /* Navegação */
@@ -128,7 +199,7 @@ nav {
 }
 .hero h1 { font-size: 4.5rem; margin: 10px 0; line-height: 0.9; }
 .location { color: #888; margin-bottom: 40px; font-size: 1.1rem; }
-.hero-buttons { display: flex; gap: 15px; }
+.hero-buttons { display: flex; gap: 15px; margin-top: 40px; }
 
 /* === CARD DE CAMPEÃO COM SEGREDOS GIGANTES === */
 .hero-image { 
@@ -298,6 +369,176 @@ nav {
     content: ''; position: absolute; bottom: 25px; left: 10%; right: 10%; height: 1px;
     background: linear-gradient(90deg, transparent, var(--lol-dark-accent), transparent); z-index: 0;
 }
+
+/* Seção de UX/Interface Cards */
+.ux-cards-container {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 3rem;
+    margin-top: 3rem; position: relative; z-index: 1;
+}
+
+.ux-story-card {
+    max-width: 500px; background: linear-gradient(135deg, rgba(10, 20, 40, 0.6) 0%, rgba(5, 16, 37, 0.8) 100%);
+    border: 2px solid var(--lol-dark-accent);
+    overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 20px rgba(10, 200, 185, 0.1), inset 0 0 10px rgba(200, 170, 110, 0.05);
+}
+.ux-story-card:hover {
+    border-color: var(--lol-gold);
+    box-shadow: 0 0 30px rgba(200, 170, 110, 0.3), 0 0 50px rgba(10, 200, 185, 0.2), inset 0 0 20px rgba(200, 170, 110, 0.1);
+    transform: translateY(-12px);
+}
+
+.ux-card-visual {
+    position: relative; overflow: hidden; height: 280px;
+    border-bottom: 2px solid var(--lol-dark-accent);
+    transition: all 0.4s ease;
+}
+.ux-story-card:hover .ux-card-visual {
+    border-bottom-color: var(--lol-gold);
+}
+
+.ux-card-visual img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.5s ease;
+}
+.ux-story-card:hover .ux-card-visual img {
+    transform: scale(1.08);
+}
+
+.ux-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(200, 170, 110, 0.2) 100%);
+    pointer-events: none;
+}
+
+.ux-card-content {
+    padding: 2rem;
+}
+
+.ux-card-title {
+    font-family: var(--font-tech); font-size: 1.4rem; color: var(--lol-gold);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;
+}
+
+.ux-card-subtitle {
+    font-family: var(--font-tech); font-size: 0.85rem; color: var(--lol-accent);
+    letter-spacing: 1px; margin-bottom: 1.5rem; text-transform: uppercase;
+}
+
+.ux-card-description {
+    font-size: 0.95rem; color: #aaa; line-height: 1.6; margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.ux-card-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--lol-gold); text-decoration: none; font-family: var(--font-tech);
+    font-weight: bold; letter-spacing: 1px; font-size: 0.9rem;
+    padding-bottom: 5px; border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+.ux-card-link:hover {
+    border-bottom-color: var(--lol-gold);
+    color: #f0e6d2;
+}
+.ux-card-link i {
+    transition: transform 0.3s ease;
+}
+.ux-card-link:hover i {
+    transform: translateX(5px);
+}
+
+/* Seção de Champions/Jogos */
+.champions-section {
+    padding: 5rem 10%; background: linear-gradient(135deg, var(--lol-deep-blue) 0%, var(--lol-dark-blue) 100%);
+    position: relative; overflow: hidden;
+}
+.champions-section::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(10, 200, 185, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(200, 170, 110, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.champions-gallery {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem; margin-top: 3rem; position: relative; z-index: 1;
+    padding-bottom: 3rem;
+}
+
+.champion-card {
+    cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.champ-portrait {
+    position: relative; overflow: hidden; aspect-ratio: 2/3;
+    border: 2px solid var(--lol-dark-accent);
+    background: linear-gradient(135deg, var(--lol-deep-blue) 0%, #051025 100%);
+    box-shadow: 0 0 20px rgba(10, 200, 185, 0.1);
+    transition: all 0.4s ease;
+}
+.champ-portrait img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.5s ease;
+}
+.champ-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(200, 170, 110, 0.15) 100%);
+    pointer-events: none;
+}
+
+.play-button {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: var(--lol-gold); color: var(--lol-dark-blue);
+    padding: 12px 30px; font-family: var(--font-tech); font-weight: bold;
+    letter-spacing: 1px; text-decoration: none; cursor: pointer;
+    opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10; text-align: center; white-space: nowrap;
+    box-shadow: 0 0 20px rgba(200, 170, 110, 0.5);
+    border: none; display: flex; align-items: center; justify-content: center;
+}
+.play-button.disabled {
+    cursor: not-allowed; background: rgba(200, 170, 110, 0.4);
+    box-shadow: 0 0 10px rgba(200, 170, 110, 0.2);
+}
+
+.champion-card:hover .play-button {
+    opacity: 1; transform: translate(-50%, -50%) scale(1);
+}
+.play-button:hover:not(.disabled) {
+    background: #e6c9a8; box-shadow: 0 0 30px rgba(200, 170, 110, 0.8);
+}
+
+.champion-card:hover .champ-portrait {
+    border-color: var(--lol-gold);
+    box-shadow: 0 0 30px rgba(200, 170, 110, 0.4), 0 0 50px rgba(10, 200, 185, 0.2), inset 0 0 20px rgba(200, 170, 110, 0.1);
+    transform: translateY(-12px) scaleY(1.02);
+}
+.champion-card:hover .champ-portrait img {
+    transform: scale(1.1);
+}
+
+.champ-info-bar {
+    padding: 1.5rem 1rem; text-align: center; background: linear-gradient(135deg, rgba(10, 20, 40, 0.8) 0%, rgba(5, 16, 37, 0.9) 100%);
+    border: 1px solid var(--lol-dark-accent);
+    border-top: none; transition: all 0.3s ease;
+}
+.champion-card:hover .champ-info-bar {
+    border-color: var(--lol-gold);
+    box-shadow: 0 0 15px rgba(200, 170, 110, 0.2);
+}
+
+.champ-title-name {
+    font-family: var(--font-tech); font-size: 1.1rem; color: var(--lol-gold);
+    letter-spacing: 1px; margin-bottom: 0.3rem; text-transform: uppercase;
+}
+.champ-type {
+    font-size: 0.8rem; color: #888; font-family: var(--font-tech);
+    letter-spacing: 0.5px;
+}
+
 .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem; padding-bottom: 3rem; }
 
 /* 340px de largura e 580px altura */
@@ -350,6 +591,25 @@ nav {
 }
 .card-details p { font-size: 0.9rem; color: #ccc; line-height: 1.4; margin-bottom: 15px; }
 
+/* Galeria de Assets */
+.assets-gallery {
+    padding: 5rem 10%; background: linear-gradient(135deg, var(--lol-deep-blue) 0%, var(--lol-dark-blue) 100%);
+    position: relative;
+}
+.assets-gallery::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(10, 200, 185, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(200, 170, 110, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.assets-container {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem; margin-top: 3rem; position: relative; z-index: 1;
+    padding-bottom: 3rem;
+}
+
 /* Rodapé */
 .footer-section { text-align: center; padding: 5rem 10% 2rem; background: #050a14; margin-top: 5rem; position: relative; }
 .footer-section::before {
@@ -382,4 +642,286 @@ footer p { color: #666; font-size: 0.85rem; margin-top: 3rem; font-family: var(-
     .lol-champion-card:hover .card-baby {
         right: 50%; top: -110px; transform: translateX(60px) rotate(10deg);
     }
+}
+
+/* =========================================
+   MÍDIA QUERY - RESPONSIVO PARA CELULAR
+   (Adicione isso no FINAL do seu style.css)
+   ========================================= */
+
+@media (max-width: 900px) {
+    /* --- AJUSTES GERAIS --- */
+    .hero h1 { font-size: 3rem; } /* Diminui o título gigante */
+    .container { padding: 4rem 5%; } /* Menos espaçamento lateral nas seções */
+    .section-header { flex-direction: column; gap: 10px; text-align: center; }
+    .header-deco { display: none; } /* Remove as linhas decorativas dos títulos */
+
+    /* --- NAVEGAÇÃO --- */
+    nav {
+        flex-direction: column; /* Empilha logo e links */
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap; /* Permite quebrar linha se precisar */
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    /* --- HERO SECTION (CAPA) --- */
+    .hero {
+        flex-direction: column; /* Texto em cima, cards embaixo */
+        text-align: center;
+        padding-top: 7rem; /* Espaço para o menu empilhado */
+        height: auto; /* Remove altura mínima */
+        gap: 40px;
+    }
+    .hero-buttons { justify-content: center; }
+    
+    /* Remove a margem lateral que centralizava no desktop */
+    .hero-image { margin: 0; width: 100%; min-width: auto; }
+
+    /* --- A SOLUÇÃO PARA OS CARDS NO MOBILE --- */
+    /* No celular, não tem "hover". Vamos mostrar as cartas secretas
+       empilhadas abaixo da principal. */
+
+    /* Ajusta o container principal para largura total, mas com limite */
+    .lol-champion-card {
+        width: 100%;
+        max-width: 340px; /* Não deixa ficar maior que o original */
+        transform-style: flat; /* Remove o 3D para facilitar o empilhamento */
+        margin: 0 auto; /* Centraliza */
+        /* Abre espaço embaixo para as cartas secretas aparecerem */
+        margin-bottom: 450px; 
+    }
+    
+    /* O Card principal (Sua foto) */
+    .main-card-content {
+        /* Garante que ele fique no topo da pilha */
+        z-index: 20; 
+    }
+
+    /* As Cartas Secretas (Esposo e Bebê) */
+    .secret-card {
+        position: relative; /* Deixa de ser absolute */
+        top: auto; left: auto; right: auto; /* Reseta posições */
+        
+        /* Faz elas ficarem um pouco menores que a principal */
+        width: 90%; 
+        height: auto; /* Altura automática baseada no conteúdo */
+        margin: -20px auto 0; /* Sobe um pouco para dar efeito de sobreposição e centraliza */
+        
+        opacity: 1; /* TORNA VISÍVEL SEMPRE */
+        z-index: 5; /* Fica abaixo da principal */
+        transform: none !important; /* Reseta rotações e escalas */
+        
+        /* Sombra para destacar que estão "atrás/embaixo" */
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+    }
+    
+    /* Ajusta a imagem interna das cartas secretas para não ficar gigante */
+    .secret-img { height: 220px; }
+
+    /* Reseta os transforms específicos de cada carta */
+    .card-husband, .card-baby { transform: none; }
+    
+    /* DESATIVA O EFEITO HOVER NO MOBILE */
+    /* Isso é crucial para não bugar quando tocar na tela */
+    .lol-champion-card:hover .card-husband,
+    .lol-champion-card:hover .card-baby {
+        transform: none;
+        opacity: 1;
+    }
+
+    /* --- SEÇÃO SOBRE (Grid vira 1 coluna) --- */
+    .about-split { grid-template-columns: 1fr; gap: 2rem; }
+
+    /* --- PROJETOS (SKIN CARDS) --- */
+    .gallery { gap: 3rem; }
+
+    .lol-skin-card {
+        /* O card agora ocupa 100% da largura disponível, até o máximo de 340px */
+        width: 100%;
+        max-width: 340px;
+        /* A altura precisa ser automática ou proporcional para não esticar em telas muito estreitas */
+        height: auto;
+        aspect-ratio: 3/5; /* Tenta manter a proporção vertical elegante */
+        min-height: 550px; /* Garante uma altura mínima para o conteúdo caber */
+    }
+    /* Ajusta a proporção da imagem dentro do card */
+    .card-visual { height: 60%; }
+    .card-details { flex: 1; }
+
+    /* --- RODAPÉ --- */
+    .contact-links { flex-direction: column; gap: 1rem; }
+    .social-link { width: 100%; justify-content: center; }
+}
+
+/* Ajuste fino para telas muito pequenas (ex: iPhone SE antigo) */
+@media (max-width: 380px) {
+    .hero h1 { font-size: 2.5rem; }
+    /* Diminui um pouco a altura das cartas secretas */
+    .secret-img { height: 180px; } 
+    .lol-champion-card { margin-bottom: 400px; }
+}
+
+/* Feixes de Luz Animados */
+.light-beam {
+    position: absolute; width: 100px; height: 500px;
+    background: linear-gradient(180deg, transparent 0%, rgba(10, 200, 185, 0.3) 30%, rgba(10, 200, 185, 0.1) 70%, transparent 100%);
+    filter: blur(30px); pointer-events: none;
+    animation: beamSweep 8s ease-in-out infinite;
+}
+.light-beam.beam1 {
+    left: 10%; top: -100px; 
+    animation: beamSweep 8s ease-in-out infinite;
+}
+.light-beam.beam2 {
+    left: 35%; top: -100px; 
+    animation: beamSweep 9s ease-in-out infinite 1s;
+    background: linear-gradient(180deg, transparent 0%, rgba(200, 170, 110, 0.25) 30%, rgba(200, 170, 110, 0.08) 70%, transparent 100%);
+}
+.light-beam.beam3 {
+    right: 25%; top: -100px; 
+    animation: beamSweep 10s ease-in-out infinite 2s;
+}
+.light-beam.beam4 {
+    right: 5%; top: -100px; 
+    animation: beamSweep 11s ease-in-out infinite 1.5s;
+    background: linear-gradient(180deg, transparent 0%, rgba(10, 200, 185, 0.2) 30%, rgba(10, 200, 185, 0.05) 70%, transparent 100%);
+}
+
+@keyframes beamSweep {
+    0%, 100% { 
+        transform: translateY(0) rotateZ(-5deg) scaleY(1);
+        opacity: 0.3;
+    }
+    25% { 
+        transform: translateY(200px) rotateZ(-2deg) scaleY(1.05);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: translateY(400px) rotateZ(0deg) scaleY(1.1);
+        opacity: 0.4;
+    }
+    75% { 
+        transform: translateY(200px) rotateZ(2deg) scaleY(1.05);
+        opacity: 0.5;
+    }
+}
+
+/* Página de Contato */
+.contact-page {
+    min-height: 100vh; padding: 5rem 10%; position: relative; z-index: 1;
+}
+
+.contact-content {
+    margin-top: 3rem;
+}
+
+.contact-intro {
+    text-align: center; margin-bottom: 4rem;
+}
+.contact-intro h3 {
+    font-family: var(--font-tech); font-size: 2rem; color: var(--lol-gold);
+    letter-spacing: 2px; margin-bottom: 1rem;
+}
+.contact-intro p {
+    font-size: 1.1rem; color: #aaa;
+}
+
+.contact-methods {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem; margin-bottom: 5rem;
+}
+
+.contact-card {
+    background: linear-gradient(135deg, rgba(10, 20, 40, 0.7) 0%, rgba(5, 16, 37, 0.8) 100%);
+    border: 2px solid var(--lol-dark-accent);
+    padding: 2rem; text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 20px rgba(10, 200, 185, 0.1);
+}
+.contact-card:hover {
+    border-color: var(--lol-gold);
+    box-shadow: 0 0 30px rgba(200, 170, 110, 0.3), 0 0 50px rgba(10, 200, 185, 0.2);
+    transform: translateY(-8px);
+}
+
+.contact-card-icon {
+    font-size: 3rem; color: var(--lol-accent); margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+.contact-card:hover .contact-card-icon {
+    color: var(--lol-gold);
+    text-shadow: 0 0 20px rgba(200, 170, 110, 0.6);
+    transform: scale(1.1);
+}
+
+.contact-card h4 {
+    font-family: var(--font-tech); font-size: 1.2rem;
+    color: var(--lol-gold); margin-bottom: 0.5rem;
+}
+.contact-card p {
+    color: #888; font-size: 0.9rem; margin-bottom: 1.5rem;
+}
+.contact-card .hex-btn {
+    width: 100%; display: flex; justify-content: center;
+}
+
+.contact-form-section {
+    max-width: 600px; margin: 4rem auto; padding: 3rem;
+    border: 2px solid var(--lol-dark-accent);
+}
+.contact-form-section h3 {
+    font-family: var(--font-tech); font-size: 1.5rem; color: var(--lol-gold);
+    margin-bottom: 2rem; text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block; font-family: var(--font-tech); color: var(--lol-gold);
+    margin-bottom: 0.5rem; font-size: 0.9rem;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%; padding: 12px 15px;
+    background: rgba(5, 16, 37, 0.8); color: #ccc;
+    border: 1px solid var(--lol-dark-accent);
+    font-family: var(--font-text); font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none; border-color: var(--lol-gold);
+    box-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
+}
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-form-section .hex-btn {
+    width: 100%; margin-top: 1rem;
+}
+
+.form-note {
+    text-align: center; font-size: 0.85rem; color: #888;
+    margin-top: 1.5rem; font-style: italic;
+}
+
+.back-button {
+    text-align: center; margin-top: 4rem;
+}
+.back-button .hex-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+}
+
+.contact-footer {
+    text-align: center; padding: 2rem; color: #888;
+    border-top: 1px solid var(--lol-dark-accent);
+    margin-top: 5rem;
 }

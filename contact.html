@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Lary Menjon | Game Developer</title>
+    <link rel="icon" href="/lary-portifolio/img/favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="floating-bg">
+        <div class="hex-shape s1"><i class="fas fa-caret-up"></i></div>
+        <div class="hex-shape s2"><i class="far fa-circle"></i></div>
+        <div class="hex-shape s3"><i class="fas fa-vector-square"></i></div>
+        <div class="hex-shape s4"><i class="fas fa-caret-down"></i></div>
+        <div class="hex-shape s5 blurred"><i class="fas fa-ring"></i></div>
+        <div class="hex-shape s6 blurred"><i class="fas fa-dice-d20"></i></div>
+        <div class="hex-shape s7 blurred"><i class="fas fa-star"></i></div>
+        <div class="hex-shape s8 blurred"><i class="fas fa-hexagon"></i></div>
+        <div class="hex-shape s9 blurred"><i class="fas fa-diamond"></i></div>
+        <div class="hex-shape s10 blurred"><i class="fas fa-circle-notch"></i></div>
+        
+        <!-- Feixes de Luz Animados -->
+        <div class="light-beam beam1"></div>
+        <div class="light-beam beam2"></div>
+        <div class="light-beam beam3"></div>
+        <div class="light-beam beam4"></div>
+    </div>
+
+    <nav>
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Bem vindos ao meu <span class="gold"> </span>Portifólio</a></div>
+        <ul class="nav-links">
+            <li><a href="index.html#about" data-text="Perfil">Perfil</a></li>
+            <li><a href="index.html#skills" data-text="Skills">Skills</a></li>
+            <li><a href="index.html#projects" data-text="Missões">Missões</a></li>
+            <li><a href="contact.html" data-text="Contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <section class="contact-page">
+        <div class="section-header">
+            <span class="header-deco left"></span>
+            <h2 class="section-title">Vitória? Continue a Partida</h2>
+            <span class="header-deco right"></span>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-intro">
+                <h3>Entre em Contato</h3>
+                <p>Pronto para começar uma nova quest? Fale comigo através dos canais abaixo!</p>
+            </div>
+
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h4>WhatsApp</h4>
+                    <p>Mensagem rápida e direta</p>
+                    <a href="https://wa.me/5547991133591" target="_blank" class="hex-btn glow">
+                        <i class="fab fa-whatsapp"></i> (47) 99113-3591
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4>Email</h4>
+                    <p>Assunto mais detalhado</p>
+                    <a href="mailto:larymenjon.dev@gmail.com" class="hex-btn glow">
+                        <i class="fas fa-envelope"></i> larymenjon.dev@gmail.com
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h4>LinkedIn</h4>
+                    <p>Conexões profissionais</p>
+                    <a href="https://www.linkedin.com/in/larymenjon" target="_blank" class="hex-btn glow">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h4>GitHub</h4>
+                    <p>Veja meus projetos</p>
+                    <a href="https://github.com/larymenjon" target="_blank" class="hex-btn glow">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form-section panel-lol">
+                <h3>Envie uma Mensagem Direta</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Assunto:</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem:</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="hex-btn glow">ENVIAR MENSAGEM</button>
+                </form>
+                <p class="form-note">Nota: Este formulário é apenas para demonstração. Use o WhatsApp ou Email para contato real.</p>
+            </div>
+        </div>
+
+        <div class="back-button">
+            <a href="index.html" class="hex-btn outline">
+                <i class="fas fa-arrow-left"></i> Voltar ao Portfólio
+            </a>
+        </div>
+    </section>
+
+    <footer class="contact-footer">
+        <p>© 2026 Laryssa Menjon. Criado com Tecnologia Hextech.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigada pela sua mensagem! Para contato direto, use o WhatsApp ou Email. 🎮');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

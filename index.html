@@ -16,15 +16,27 @@
         <div class="hex-shape s2"><i class="far fa-circle"></i></div>
         <div class="hex-shape s3"><i class="fas fa-vector-square"></i></div>
         <div class="hex-shape s4"><i class="fas fa-caret-down"></i></div>
+        <div class="hex-shape s5 blurred"><i class="fas fa-ring"></i></div>
+        <div class="hex-shape s6 blurred"><i class="fas fa-dice-d20"></i></div>
+        <div class="hex-shape s7 blurred"><i class="fas fa-star"></i></div>
+        <div class="hex-shape s8 blurred"><i class="fas fa-hexagon"></i></div>
+        <div class="hex-shape s9 blurred"><i class="fas fa-diamond"></i></div>
+        <div class="hex-shape s10 blurred"><i class="fas fa-circle-notch"></i></div>
+        
+        <!-- Feixes de Luz Animados -->
+        <div class="light-beam beam1"></div>
+        <div class="light-beam beam2"></div>
+        <div class="light-beam beam3"></div>
+        <div class="light-beam beam4"></div>
     </div>
 
     <nav>
-        <div class="logo">LARY<span class="gold">.</span>DEV</div>
+        <div class="logo">Bem vindos ao meu <span class="gold"> </span>Portifólio</div>
         <ul class="nav-links">
             <li><a href="#about" data-text="Perfil">Perfil</a></li>
             <li><a href="#skills" data-text="Skills">Skills</a></li>
             <li><a href="#projects" data-text="Missões">Missões</a></li>
-            <li><a href="#contact" data-text="Contato">Contato</a></li>
+            <li><a href="contact.html" data-text="Contato">Contato</a></li>
         </ul>
     </nav>
 
@@ -33,7 +45,18 @@
             <div class="faction-icon"><i class="fas fa-cog fa-spin"></i> Portifólio - SISTEMAS & GAMES</div>
             <h1>LARY<br><span class="outline-gold">MENJON</span></h1>
             <p class="location"><i class="fas fa-map-marker-alt"></i> Joinville, SC, Brasil</p>
+
+
+            <div class="hero-intro">
+                <p>
+                    <b>Seja bem-vindo(a) ao meu Nexus criativo.</b><br>
+                    Aqui é onde a lógica de sistemas encontra a magia dos games. 
+                    Explore meu portfólio de projetos, desde mecânicas em C# até interfaces focadas em UX.
+                </p>
+            </div>
             
+<div class="divider-line"></div>
+
             <div class="hero-buttons">
                 <a href="#projects" class="hex-btn glow">VER MISSÕES</a>
                 <a href="https://larymenjon.itch.io/" target="_blank" class="hex-btn outline">GAMES</a>
@@ -46,7 +69,7 @@
                 <div class="secret-card card-husband">
     <div class="card-border">
         <div class="img-mask">
-            <img src="/lary-portifolio/img/eleeela.png" alt="Esposo Player 2" class="champ-img">
+            <img src="/img/eleeela.png" alt="Esposo Player 2" class="champ-img">
         </div>
         <div class="champ-level"><span>LVL</span><b>26</b></div>
     </div>
@@ -61,7 +84,7 @@
 <div class="secret-card card-baby">
     <div class="card-border">
         <div class="img-mask">
-            <img src="/lary-portifolio/img/baby.png" alt="Heitor Mini Boss" class="champ-img">
+            <img src="/img/baby.png" alt="Heitor Mini Boss" class="champ-img">
         </div>
         <div class="champ-level"><span>LVL</span><b>1</b></div>
     </div>
@@ -77,7 +100,7 @@
                 <div class="main-card-content">
                     <div class="card-border">
                         <div class="img-mask">
-                            <img src="/lary-portifolio/img/avatar.png" alt="Campeã Laryssa" class="champ-img">
+                            <img src="/img/avatar.png" alt="Campeã Laryssa" class="champ-img">
                         </div>
                         <div class="champ-level"><span>LVL</span><b>28</b></div>
                     </div>
@@ -222,87 +245,157 @@
         </div>
     </section>
 
-    <section id="projects">
-        
-        <div class="category-divider">
-            <h3><i class="fas fa-gamepad"></i> Jogos Desenvolvidos</h3>
+    <section id="projects" class="champions-section">
+        <div class="section-header">
+            <span class="header-deco left"></span>
+            <h2 class="section-title"><i class="fas fa-gamepad"></i> Missões Cumpridas</h2>
+            <span class="header-deco right"></span>
         </div>
 
-        <div class="gallery">
-            <div class="lol-skin-card">
-                <div class="card-frame">
-                    <div class="card-visual">
-                        <img src="/lary-portifolio/img/shadowed.png" alt="Shadowed" onerror="this.style.opacity='0'">
-                        <div class="card-title-bar">Shadowed</div>
-                    </div>
-                    <div class="card-details">
-                        <div class="card-tags">
-                            <span class="rune-tag"><i class="fab fa-unity"></i> Unity</span>
-                            <span class="rune-tag"><i class="fas fa-globe"></i> WEB</span>
-                        </div>
-                        <p>Puzzle Platformer 2D. O tempo e os inimigos só se movem quando você age.</p>
-                        <a href="https://larymenjon.itch.io/shadowed" target="_blank" class="hex-btn glow small-btn">JOGAR AGORA</a>
-                    </div>
+        <div class="champions-gallery">
+            <div class="champion-card">
+                <div class="champ-portrait">
+                    <img src="/img/shadowed.png" alt="Shadowed" onerror="this.style.opacity='0'">
+                    <div class="champ-overlay"></div>
+                    <a href="https://larymenjon.itch.io/shadowed" target="_blank" class="play-button">JOGAR</a>
+                </div>
+                <div class="champ-info-bar">
+                    <h3 class="champ-title-name">Shadowed</h3>
+                    <p class="champ-type">Puzzle Platformer</p>
                 </div>
             </div>
 
-            <div class="lol-skin-card">
-                <div class="card-frame">
-                    <div class="card-visual">
-                        <img src="/lary-portifolio/img/conexao.png" alt="Conexão Favela" onerror="this.style.opacity='0'">
-                        <div class="card-title-bar">Conexão Favela</div>
-                    </div>
-                    <div class="card-details">
-                        <div class="card-tags">
-                            <span class="rune-tag"><i class="fab fa-unity"></i> Unity</span>
-                            <span class="rune-tag"><i class="fas fa-mobile-alt"></i> Android</span>
-                        </div>
-                        <p>Endless Runner. Colete e-lixo para melhorar a conexão da comunidade.</p>
-                        <a href="https://larymenjon.itch.io/conexao-favela" target="_blank" class="hex-btn glow small-btn">JOGAR AGORA</a>
-                    </div>
+            <div class="champion-card">
+                <div class="champ-portrait">
+                    <img src="/img/conexao.png" alt="Conexão Favela" onerror="this.style.opacity='0'">
+                    <div class="champ-overlay"></div>
+                    <a href="https://larymenjon.itch.io/conexao-favela" target="_blank" class="play-button">JOGAR</a>
+                </div>
+                <div class="champ-info-bar">
+                    <h3 class="champ-title-name">Conexão Favela</h3>
+                    <p class="champ-type">Endless Runner</p>
+                </div>
+            </div>
+
+            <div class="champion-card">
+                <div class="champ-portrait">
+                    <img src="/img/projeto3.png" alt="Projeto 3" onerror="this.style.opacity='0'">
+                    <div class="champ-overlay"></div>
+                    <div class="play-button disabled">EM BREVE</div>
+                </div>
+                <div class="champ-info-bar">
+                    <h3 class="champ-title-name">Em Breve</h3>
+                    <p class="champ-type">Novo Projeto</p>
+                </div>
+            </div>
+
+            <div class="champion-card">
+                <div class="champ-portrait">
+                    <img src="/img/projeto4.png" alt="Projeto 4" onerror="this.style.opacity='0'">
+                    <div class="champ-overlay"></div>
+                    <div class="play-button disabled">EM BREVE</div>
+                </div>
+                <div class="champ-info-bar">
+                    <h3 class="champ-title-name">Em Breve</h3>
+                    <p class="champ-type">Novo Projeto</p>
+                </div>
+            </div>
+
+            <div class="champion-card">
+                <div class="champ-portrait">
+                    <img src="/img/projeto5.png" alt="Projeto 5" onerror="this.style.opacity='0'">
+                    <div class="champ-overlay"></div>
+                    <div class="play-button disabled">EM BREVE</div>
+                </div>
+                <div class="champ-info-bar">
+                    <h3 class="champ-title-name">Em Breve</h3>
+                    <p class="champ-type">Novo Projeto</p>
                 </div>
             </div>
         </div>
 
         <div class="category-divider" style="margin-top: 4rem;">
-            <h3><i class="fas fa-palette"></i> Interface & UX</h3>
+            <h3><i class="fas fa-palette"></i> Interface & UI/UX</h3>
         </div>
 
-        <div class="gallery center-gallery">
-            <div class="lol-skin-card">
-                <div class="card-frame">
-                    <div class="card-visual">
-                        <img src="/lary-portifolio/img/abrigo.png" alt="Abrigo Amigo UI" onerror="this.style.opacity='0'">
-                        <div class="card-title-bar">Abrigo Amigo UX</div>
-                    </div>
-                    <div class="card-details">
-                        <div class="card-tags">
-                            <span class="rune-tag"><i class="fab fa-figma"></i> Figma</span>
-                            <span class="rune-tag"><i class="fas fa-vector-square"></i> UI Design</span>
-                        </div>
-                        <p>Prototipagem de alta fidelidade focada em UX para adoção responsável.</p>
-                        <a href="https://www.figma.com/proto/Xkl7bWER8iLBU0Oved66e5/Projeto-Eu-Abrigo?node-id=0-1&t=XcrjblSQrXlh2k8p-1" target="_blank" class="hex-btn glow small-btn">VER PROTÓTIPO</a>
-                    </div>
+        <div class="ux-cards-container">
+            <div class="ux-story-card">
+                <div class="ux-card-visual">
+                    <img src="/img/abrigo.png" alt="Abrigo Amigo UI" onerror="this.style.opacity='0'">
+                    <div class="ux-card-overlay"></div>
+                </div>
+                <div class="ux-card-content">
+                    <h3 class="ux-card-title">Abrigo Amigo</h3>
+                    <p class="ux-card-subtitle">UX Design - Figma</p>
+                    <p class="ux-card-description">
+                        Prototipagem de alta fidelidade focada em UX para adoção responsável de animais. 
+                        Uma interface intuitiva que conecta pessoas dispostas a dar amor e lar aos animais que precisam.
+                    </p>
+                    <a href="https://www.figma.com/proto/Xkl7bWER8iLBU0Oved66e5/Projeto-Eu-Abrigo?node-id=0-1&t=XcrjblSQrXlh2k8p-1" target="_blank" class="ux-card-link">
+                        <span>VER PROTÓTIPO</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="footer-section">
+    <section id="assets" class="assets-gallery">
         <div class="section-header">
             <span class="header-deco left"></span>
-            <h2 class="section-title">Vitória? Continue a Partida</h2>
+            <h2 class="section-title">Galeria de Assets</h2>
             <span class="header-deco right"></span>
         </div>
-        
-        <div class="contact-links">
-            <a href="https://www.linkedin.com/in/larymenjon" target="_blank" class="social-link hex-btn outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/larymenjon" target="_blank" class="social-link hex-btn outline"><i class="fab fa-github"></i> GitHub</a>
-            <a href="mailto:larymenjon.dev@gmail.com" class="social-link hex-btn outline"><i class="fas fa-envelope"></i> Email</a>
-        </div>
-        <footer>
-            <p>© 2026 Laryssa Menjon. Criado com Tecnologia Hextech.</p>
-        </footer>
+
+        <div class="assets-container">
+            <div class="champion-card">
+                <div class="champ-portrait">
+                    <img src="/img/asset1.png" alt="Asset 1">
+                    <div class="champ-overlay"></div>
+                    <div class="play-button disabled">EM BREVE</div>
+                </div>
+                <div class="champ-info-bar">
+                    <h3 class="champ-title-name">Asset 1</h3>
+                    <p class="champ-type">Artwork</p>
+                </div>
+            </div>
+
+            <div class="champion-card">
+                <div class="champ-portrait">
+                    <img src="/img/asset2.png" alt="Asset 2">
+                    <div class="champ-overlay"></div>
+                    <div class="play-button disabled">EM BREVE</div>
+                </div>
+                <div class="champ-info-bar">
+                    <h3 class="champ-title-name">Asset 2</h3>
+                    <p class="champ-type">Artwork</p>
+                </div>
+            </div>
+
+            <div class="champion-card">
+                <div class="champ-portrait">
+                    <img src="/img/asset3.png" alt="Asset 3">
+                    <div class="champ-overlay"></div>
+                    <div class="play-button disabled">EM BREVE</div>
+                </div>
+                <div class="champ-info-bar">
+                    <h3 class="champ-title-name">Asset 3</h3>
+                    <p class="champ-type">Artwork</p>
+                </div>
+            </div>
+
+            <div class="champion-card">
+                <div class="champ-portrait">
+                    <img src="/img/asset4.png" alt="Asset 4">
+                    <div class="champ-overlay"></div>
+                    <div class="play-button disabled">EM BREVE</div>
+                </div>
+                <div class="champ-info-bar">
+                    <h3 class="champ-title-name">Asset 4</h3>
+                    <p class="champ-type">Artwork</p>
+                </div>
+            </div>
+           
     </section>
 
     <script src="script.js"></script>
