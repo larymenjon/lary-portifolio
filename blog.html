@@ -162,6 +162,41 @@
         </div>
     </section>
 
+    <!-- VISUALIZAÇÃO DE ARTIGO INDIVIDUAL -->
+    <section class="blog-section" id="articleView" style="display: none;">
+        <a href="#" class="back-button" id="backFromArticleButton">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </a>
+
+        <article class="article-full">
+            <div class="article-header">
+                <span class="article-category" id="articleCategoryTag"></span>
+                <h1 id="articleTitle"></h1>
+                <div class="article-meta">
+                    <span class="article-date" id="articleDate"></span>
+                    <span class="article-read-time" id="articleReadTime"></span>
+                </div>
+            </div>
+
+            <div class="article-content" id="articleContent"></div>
+
+            <div class="article-footer">
+                <div class="article-actions">
+                    <button class="action-btn like-btn" id="likeBtn">
+                        <i class="far fa-heart"></i>
+                        <span id="likeCount">0</span>
+                    </button>
+                    <button class="action-btn share-btn" data-share="link" title="Copiar link">
+                        <i class="fas fa-link"></i> Link
+                    </button>
+                    <button class="action-btn share-btn" data-share="whatsapp" title="Compartilhar no WhatsApp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                </div>
+            </div>
+        </article>
+    </section>
+
     <div class="divider-line"></div>
 
     <!-- GRID DE ARTIGOS (vista inicial) -->
@@ -172,10 +207,8 @@
             <span class="header-deco right"></span>
         </div>
 
-        <div class="construction-banner">
-            <i class="fas fa-tools"></i>
-            <h2>EM CONSTRUÇÃO</h2>
-            <p>Novos artigos em breve...</p>
+        <div class="latest-articles-grid" id="latestArticlesGrid">
+            <!-- Cards dos últimos artigos serão carregados aqui -->
         </div>
     </section>
 
