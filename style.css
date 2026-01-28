@@ -1021,7 +1021,7 @@ footer p { color: #666; font-size: 0.85rem; margin-top: 3rem; font-family: var(-
                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%230ac8b9;stop-opacity:0.05" /><stop offset="100%" style="stop-color:%23c8aa6e;stop-opacity:0.05" /></linearGradient></defs><rect width="1200" height="400" fill="url(%23grad)"/></svg>');
     background-attachment: fixed;
     padding: 6rem 2rem;
-    text-align: left;
+    text-align: center;
     position: relative;
     overflow: hidden;
     border-bottom: 2px solid var(--lol-gold);
@@ -1127,6 +1127,124 @@ footer p { color: #666; font-size: 0.85rem; margin-top: 3rem; font-family: var(-
     position: relative;
     z-index: 1;
     letter-spacing: 1px;
+}
+
+/* CATEGORIAS DO BLOG */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    animation: fadeIn 0.8s ease-out;
+    margin-bottom: 2rem;
+}
+
+.category-card {
+    background: linear-gradient(135deg, rgba(10, 50, 60, 0.7), rgba(15, 35, 50, 0.7));
+    border: 2px solid var(--lol-dark-accent);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(200, 170, 110, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.category-card:hover {
+    border-color: var(--lol-gold);
+    box-shadow: 0 0 30px rgba(200, 170, 110, 0.4),
+                inset 0 0 15px rgba(10, 200, 185, 0.1);
+    transform: translateY(-8px);
+}
+
+.category-card:hover::before {
+    left: 100%;
+}
+
+.category-icon {
+    font-size: 3rem;
+    color: var(--lol-accent);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover .category-icon {
+    color: var(--lol-gold);
+    transform: scale(1.2) rotate(10deg);
+}
+
+.category-card h3 {
+    font-family: var(--font-tech);
+    font-size: 1.4rem;
+    color: var(--lol-gold);
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.category-card p {
+    font-size: 0.95rem;
+    color: rgba(240, 230, 210, 0.8);
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilo para category-card como link */
+.category-card {
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+}
+
+/* HEADER DA PÁGINA DE CATEGORIA */
+.category-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.back-button {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, rgba(10, 200, 185, 0.2), rgba(200, 170, 110, 0.1));
+    border: 1px solid var(--lol-accent);
+    border-radius: 6px;
+    color: var(--lol-accent);
+    font-family: var(--font-tech);
+    font-size: 0.95rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background: linear-gradient(135deg, rgba(10, 200, 185, 0.4), rgba(200, 170, 110, 0.2));
+    color: var(--lol-gold);
+    border-color: var(--lol-gold);
+    transform: translateX(-5px);
+}
+
+.back-button i {
+    font-size: 1.1rem;
 }
 
 .blog-grid {

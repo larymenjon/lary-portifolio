@@ -150,12 +150,101 @@ document.addEventListener("DOMContentLoaded", () => {
     // SMOOTH SCROLL
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            // Não fazer smooth scroll se for uma categoria
+            if (href.startsWith('#category/')) {
+                return; // Deixar o navegador fazer o roteamento
+            }
             e.preventDefault();
-            const targetId = this.getAttribute('href');
+            const targetId = href;
             const targetSection = document.querySelector(targetId);
             if (targetSection) {
                 targetSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
+
+    // ===== GERENCIAMENTO DE CATEGORIAS DO BLOG =====
+    const categoryMap = {
+        'game-design': 'Game Design',
+        'programacao': 'Programação de Jogos',
+        'arte-visual': 'Arte e Estilo Visual',
+        'devlog': 'Devlog / Diário de Desenvolvimento',
+        'industria': 'Indústria de Jogos',
+        'analises': 'Análises de Jogos',
+        'tutoriais': 'Tutoriais',
+        'game-jams': 'Game Jams',
+        'audio': 'Áudio para Jogos',
+        'psicologia': 'Psicologia dos Jogos'
+    };
+
+    // Detectar mudanças de URL (hash)
+    function handleCategoryRoute() {
+        const hash = window.location.hash;
+        
+        if (hash.startsWith('#category/')) {
+            const categoryId = hash.replace('#category/', '');
+            const categoryName = categoryMap[categoryId];
+            
+            if (categoryName) {
+                showCategoryView(categoryId, categoryName);
+            }
+        } else {
+            showBlogView();
+        }
+    }
+
+    function showCategoryView(categoryId, categoryName) {
+        const blogView = document.getElementById('blogView');
+        const categoryView = document.getElementById('categoryView');
+        const categoryTitle = document.getElementById('categoryTitle');
+        const categoriesSection = document.getElementById('categoriesSection');
+        const blogHeroTitle = document.getElementById('blogHeroTitle');
+        const blogHeroSubtitle = document.getElementById('blogHeroSubtitle');
+        const backButton = document.getElementById('backButton');
+
+        if (blogView) blogView.style.display = 'none';
+        if (categoryView) categoryView.style.display = 'block';
+        if (categoriesSection) categoriesSection.style.display = 'none';
+        if (categoryTitle) categoryTitle.textContent = categoryName;
+        
+        // Atualizar título do hero
+        if (blogHeroTitle) blogHeroTitle.textContent = categoryName;
+        if (blogHeroSubtitle) blogHeroSubtitle.textContent = `Explore todos os artigos sobre ${categoryName.toLowerCase()}`;
+        
+        // Configurar o botão de voltar
+        if (backButton) {
+            backButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.hash = '#';
+            });
+        }
+
+        // Scroll para o topo
+        window.scrollTo(0, 0);
+    }
+
+    function showBlogView() {
+        const blogView = document.getElementById('blogView');
+        const categoryView = document.getElementById('categoryView');
+        const categoriesSection = document.getElementById('categoriesSection');
+        const blogHeroTitle = document.getElementById('blogHeroTitle');
+        const blogHeroSubtitle = document.getElementById('blogHeroSubtitle');
+
+        if (blogView) blogView.style.display = 'block';
+        if (categoryView) categoryView.style.display = 'none';
+        if (categoriesSection) categoriesSection.style.display = 'block';
+        
+        // Restaurar título original
+        if (blogHeroTitle) blogHeroTitle.textContent = 'Pixel & Code';
+        if (blogHeroSubtitle) blogHeroSubtitle.textContent = 'Um blog sobre desenvolvimento de jogos, onde arte, código e criatividade se encontram.';
+
+        window.scrollTo(0, 0);
+    }
+
+    // Detectar mudanças de hash
+    window.addEventListener('hashchange', handleCategoryRoute);
+    
+    // Chamar ao carregar a página
+    handleCategoryRoute();
 });

@@ -44,15 +44,134 @@
     <!-- SEÇÃO BLOG HEADER -->
     <section class="blog-hero">
         <div class="blog-hero-content">
-            <h1>DEV</h1>
-            <p>Um olhar nos bastidores sobre o quê, como, onde, quando e porquês de League of Legends e desenvolvimento de games.</p>
+            <h1 id="blogHeroTitle">Pixel & Code</h1>
+            <p id="blogHeroSubtitle">Um blog sobre desenvolvimento de jogos, onde arte, código e criatividade se encontram.</p>
         </div>
     </section>
 
     <div class="divider-line"></div>
 
-    <!-- GRID DE ARTIGOS -->
-    <section class="blog-section">
+    <!-- SEÇÃO DE CATEGORIAS -->
+    <section class="blog-section" id="categoriesSection">
+        <div class="section-header">
+            <span class="header-deco left"></span>
+            <h2 class="section-title">Categorias</h2>
+            <span class="header-deco right"></span>
+        </div>
+
+        <div class="categories-grid" id="categoriesGrid">
+            <a href="#category/game-design" class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-chess-board"></i>
+                </div>
+                <h3>Game Design</h3>
+                <p>Mecânicas, narrativas e conceitos de design de jogos</p>
+            </a>
+
+            <a href="#category/programacao" class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Programação de Jogos</h3>
+                <p>C#, Unity, arquitetura e padrões de código</p>
+            </a>
+
+            <a href="#category/arte-visual" class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Arte e Estilo Visual</h3>
+                <p>Pixel art, 3D, conceitos visuais e composição</p>
+            </a>
+
+            <a href="#category/devlog" class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>Devlog / Diário de Desenvolvimento</h3>
+                <p>Progresso, desafios e aprendizados dos meus projetos</p>
+            </a>
+
+            <a href="#category/industria" class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <h3>Indústria de Jogos</h3>
+                <p>Tendências, carreira e notícias do setor</p>
+            </a>
+
+            <a href="#category/analises" class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <h3>Análises de Jogos</h3>
+                <p>Crítica e análise detalhada de games</p>
+            </a>
+
+            <a href="#category/tutoriais" class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Tutoriais</h3>
+                <p>Guias passo a passo e técnicas práticas</p>
+            </a>
+
+            <a href="#category/game-jams" class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Game Jams</h3>
+                <p>Experiências, ideias e lições de game jams</p>
+            </a>
+
+            <a href="#category/audio" class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+                <h3>Áudio para Jogos</h3>
+                <p>Sound design, música e efeitos sonoros</p>
+            </a>
+
+            <a href="#category/psicologia" class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Psicologia dos Jogos</h3>
+                <p>Comportamento do jogador e experiência emocional</p>
+            </a>
+        </div>
+    </section>
+
+    <div class="divider-line"></div>
+
+    <!-- SEÇÃO DE CATEGORIA (escondida por padrão) -->
+    <section class="blog-section" id="categoryView" style="display: none;">
+        <div class="category-header">
+            <a href="#" class="back-button" id="backButton">
+                <i class="fas fa-arrow-left"></i> Voltar ao Blog
+            </a>
+            <h2 class="section-title" id="categoryTitle"></h2>
+        </div>
+
+        <div class="blog-grid" id="categoryArticles">
+            <div class="construction-banner">
+                <i class="fas fa-tools"></i>
+                <h3>Artigos em breve</h3>
+                <p>Nenhum artigo publicado nesta categoria ainda.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider-line"></div>
+
+    <!-- GRID DE ARTIGOS (vista inicial) -->
+    <section class="blog-section" id="blogView">
+        <div class="section-header">
+            <span class="header-deco left"></span>
+            <h2 class="section-title">Últimos Artigos</h2>
+            <span class="header-deco right"></span>
+        </div>
+
         <div class="construction-banner">
             <i class="fas fa-tools"></i>
             <h2>EM CONSTRUÇÃO</h2>
